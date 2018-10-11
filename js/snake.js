@@ -47,9 +47,6 @@ class Snake{
         ];
 
         this.field[this.snake[0].y][this.snake[0].x] = SNAKE;
-        // for(let i = 0; i < this.snake.length; i++){
-        //     this.field[this.snake[i].y][this.snake[i].x] = SNAKE;
-        // }
     }
 
     nextStep(){
@@ -57,7 +54,6 @@ class Snake{
             if(this.snake[i].y >= 0){
                 this.field[this.snake[i].y][this.snake[i].x] = EMPTY
             }
-            // this.field[this.snake[i].y][this.snake[i].x] = EMPTY
             this.snake[i] = {...this.snake[i-1]}
         }
 
@@ -77,7 +73,7 @@ class Snake{
                 break;
         }
 
-        if(!this.checkWall(head) || !this.checkEatItself(head)){
+        if(!this.checkWall(head) || !this.checkEatItself(head) || !this.checkRect(head)){
             return STATUS_DEAD;
         }
 
@@ -112,6 +108,14 @@ class Snake{
 
     checkEatItself(head){
         if(this.snake.filter(item => item.x === head.x && item.y === head.y).length > 1){
+            this.started = false;
+            return STATUS_DEAD;
+        }
+        return STATUS_NONE;
+    }
+
+    checkRect(head){
+        if(this.field[head.y][head.x] === RECT){
             this.started = false;
             return STATUS_DEAD;
         }
