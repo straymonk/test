@@ -1,1 +1,31 @@
-<h1>Hello world</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Snaketris
+        </title>
+        <link rel="stylesheet" type="text/css" href="css/snaketris.css">
+        <script src="js/functions.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/field.js"></script>
+        <script src="js/foodgen.js"></script>
+        <script src="js/game.js"></script>
+        <script src="js/snake.js"></script>
+        <script src="js/draw.js"></script>
+    </head>
+    <body>
+        <div class = "grid">
+            <div>
+                <canvas id = "field" width="400" height="800"></canvas>
+            </div>
+            <div style = "margin-left: 10px">
+                <div style = "margin-top: 200px">
+                    <button id = "button" onclick="start()">Start</button>
+                </div>
+                <div style = "margin-top: 10px">
+                    <button id = "button" onclick="alert('Maybe later')">Configire</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
