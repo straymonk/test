@@ -22,6 +22,9 @@ class Draw {
                     this.context.beginPath();
                     this.context.rect(this.xStartPos + (col * this.cellSide), this.yStartPos + (row * this.cellSide), this.cellSide, this.cellSide);
                     this.context.fill();
+                    this.context.lineWidth = 2;
+                    this.context.strokeStyle = "black";
+                    this.context.stroke();
                 }else if(this.field[row][col] == FOOD){
                     this.context.fillStyle="#006600";
                     this.context.beginPath();
@@ -33,10 +36,12 @@ class Draw {
     }
 
     youDied(){
-        this.context.font = "50px Comic Sans MS";
+        this.context.font = "60px Comic Sans MS";
         this.context.fillStyle = "red";
+        this.context.strokeStyle = "black";
         this.context.textAlign = "center";
         this.context.fillText("You died!", (this.cols * this.cellSide)/2, (this.rows * this.cellSide)/2); 
+        this.context.strokeText("You died!", (this.cols * this.cellSide)/2, (this.rows * this.cellSide)/2);
     }
 
 }
