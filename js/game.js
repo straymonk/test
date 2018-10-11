@@ -35,6 +35,7 @@ class Game {
                 return;
             }else if(status == STATUS_ATE){
                 console.log("Ate");
+                console.log(this.field);
                 foodgen.produce();
                 deadSnake = new DeadSnake(this.field, this.config, snake);
                 snake = new Snake(this.field, this.config);
@@ -47,7 +48,3 @@ class Game {
     }
 
 }
-
-
-
-
