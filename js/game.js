@@ -18,17 +18,25 @@ class Game {
         let foodgen = new FoodGen(this.field, this.config);
         foodgen.produce();
         let snake = new Snake(this.field, this.config);
+        let deadSnake = null;
         while(this.started){
             this.draw.drawField();
             await sleep(this.timeout);
 
             let status = snake.nextStep();
+            if(deadSnake != null){
+                if(!deadSnake.nextStep()){
+                    deadSnake = null;
+                }
+            }
+
             if(status == STATUS_DEAD){
                 console.log("You died");
                 return;
             }else if(status == STATUS_ATE){
                 console.log("Ate");
                 foodgen.produce();
+                deadSnake = new DeadSnake(this.field, this.config, snake);
                 snake = new Snake(this.field, this.config);
             }
         }
