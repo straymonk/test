@@ -82,7 +82,8 @@ class Snake{
         if(this.field[head.y][head.x] == FOOD){
             status = STATUS_ATE;
             for(let i = 0; i < this.snake.length; i++){
-                if(this.snake[i].y >= this.snake[i].y){
+                //wtf???
+                if(this.snake[i].y >= 0){
                     this.field[this.snake[i].y][this.snake[i].x] = DEAD_SNAKE;
                 }
             }
@@ -93,7 +94,7 @@ class Snake{
                 }
             }
         }
-
+        
         this.waitForRedraw = false;
         return status;
     }
