@@ -5,7 +5,7 @@ class Config {
             rows: 20,
             cols: 10,
             cellSide: 40,
-            timeout: 350
+            timeout: 250
         }
     }
 
