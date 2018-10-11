@@ -18,15 +18,17 @@ class Game {
         let foodgen = new FoodGen(this.field, this.config);
         foodgen.produce();
         let snake = new Snake(this.field, this.config);
-        let deadSnake = null;
+        let deadSnake = [];
         while(this.started){
             this.draw.drawField();
             await sleep(this.timeout);
 
             let status = snake.nextStep();
-            if(deadSnake != null){
-                if(!deadSnake.nextStep()){
-                    deadSnake = null;
+            if(deadSnake.length){
+                for(let i = 0; i < deadSnake.length; i++){
+                    if(!deadSnake[i].nextStep()){
+                        deadSnake.splice(i, 1);
+                    }
                 }
             }
 
@@ -35,7 +37,7 @@ class Game {
                 this.stop();
             }else if(status == STATUS_ATE){
                 foodgen.produce();
-                deadSnake = new DeadSnake(this.field, this.config, snake);
+                deadSnake.push(new DeadSnake(this.field, this.config, snake));
                 snake = new Snake(this.field, this.config);
             }
         }
