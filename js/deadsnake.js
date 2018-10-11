@@ -9,12 +9,13 @@ class DeadSnake {
         this.cols = config.cols;
 
         this.direction = DOWN;
-        this.waitForRedraw = false;
 
         this.deadSnake = snake.snake;
     }
 
     nextStep(){
+        for(let i = 0; i < this.rows; i++){
+        }
         if(!this.checkWall() || !this.checkOtherSnake()){
             for(let i = 0; i < this.deadSnake.length; i++){ 
                 this.field[this.deadSnake[i].y][this.deadSnake[i].x] = RECT
@@ -25,6 +26,9 @@ class DeadSnake {
         for(let i = 0; i < this.deadSnake.length; i++){
             this.field[this.deadSnake[i].y][this.deadSnake[i].x] = EMPTY
             this.deadSnake[i].y = this.deadSnake[i].y + 1; 
+        }
+
+        for(let i = 0; i < this.deadSnake.length; i++){
             this.field[this.deadSnake[i].y][this.deadSnake[i].x] = DEAD_SNAKE
         }
         return STATUS_FALL;
