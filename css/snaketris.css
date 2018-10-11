@@ -1,5 +1,5 @@
 #field{
-    background-color: rgba(158, 167, 184, 0.8);
+    background-color: rgba(158, 167, 184, 0.8); 
     border:2px solid #000000;
 }
 
@@ -19,4 +19,11 @@
     justify-content: space-betwen;
 }
 
+.buttons {
+    margin-left: 10px;
+    margin-top: 200px;
+}
 
+.button {
+    margin-top: 10px;
+}
