@@ -14,8 +14,6 @@ class DeadSnake {
     }
 
     nextStep(){
-        for(let i = 0; i < this.rows; i++){
-        }
         if(!this.checkWall() || !this.checkOtherSnake()){
             for(let i = 0; i < this.deadSnake.length; i++){ 
                 this.field[this.deadSnake[i].y][this.deadSnake[i].x] = RECT
@@ -37,6 +35,7 @@ class DeadSnake {
     checkWall(){
         for(let i = 0; i < this.deadSnake.length; i++){
             if(this.deadSnake[i].y + 1 > this.rows - 1) {
+                console.log("stop")
                 return STATUS_STOP;
             } 
         }
@@ -46,6 +45,7 @@ class DeadSnake {
     checkOtherSnake(){
         for(let i = 0; i < this.deadSnake.length; i++){
             if(this.field[this.deadSnake[i].y + 1][this.deadSnake[i].x] == RECT){
+                console.log("stop")
                 return STATUS_STOP;
             }
         }
