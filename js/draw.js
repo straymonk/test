@@ -19,15 +19,24 @@ class Draw {
             for(let col = 0; col < this.cols; col++){
                 if(this.field[row][col] == RECT || this.field[row][col] == SNAKE || this.field[row][col] == DEAD_SNAKE){
                     this.context.fillStyle="#800000";
-                    this.context.fillRect(this.xStartPos + (col * this.cellSide), this.yStartPos + (row * this.cellSide), this.cellSide, this.cellSide);
+                    this.context.beginPath();
+                    this.context.rect(this.xStartPos + (col * this.cellSide), this.yStartPos + (row * this.cellSide), this.cellSide, this.cellSide);
+                    this.context.fill();
                 }else if(this.field[row][col] == FOOD){
                     this.context.fillStyle="#006600";
-                    this.context.beginPath()
+                    this.context.beginPath();
                     this.context.arc(this.xStartPos + (col * this.cellSide) + this.cellSide / 2, this.yStartPos + (row * this.cellSide) + this.cellSide / 2, 10,0,Math.PI*2);
                     this.context.fill();
                 }
             }
         }
+    }
+
+    youDied(){
+        this.context.font = "50px Comic Sans MS";
+        this.context.fillStyle = "red";
+        this.context.textAlign = "center";
+        this.context.fillText("You died!", (this.cols * this.cellSide)/2, (this.rows * this.cellSide)/2); 
     }
 
 }
